@@ -182,7 +182,6 @@ static void drawbars(void);
 static void drawcoloredtext(char *text);
 static void drawsquare(Bool filled, Bool empty, unsigned long col[ColLast]);
 static void drawtext(const char *text, unsigned long col[ColLast], Bool pad);
-static void enternotify(XEvent *e);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
@@ -268,7 +267,6 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[ConfigureRequest] = configurerequest,
 	[ConfigureNotify] = configurenotify,
 	[DestroyNotify] = destroynotify,
-	[EnterNotify] = enternotify,
 	[Expose] = expose,
 	[FocusIn] = focusin,
 	[KeyPress] = keypress,
@@ -457,7 +455,11 @@ buttonpress(XEvent *e) {
 			click = ClkWinTitle;
 	}
 	else if((c = wintoclient(ev->window))) {
-		focus(c);
+		if(ev->button != Button4 && ev->button != Button5) {
+			focus(c);
+			restack(selmon);
+		}
+		XAllowEvents(dpy, ReplayPointer, CurrentTime);
 		click = ClkClientWin;
 	}
 	for(i = 0; i < LENGTH(buttons); i++)
@@ -838,25 +840,6 @@ drawtext(const char *text, unsigned long col[ColLast], Bool pad) {
 }
 
 void
-enternotify(XEvent *e) {
-	Client *c;
-	Monitor *m;
-	XCrossingEvent *ev = &e->xcrossing;
-
-	if((ev->mode != NotifyNormal || ev->detail == NotifyInferior) && ev->window != root)
-		return;
-	c = wintoclient(ev->window);
-	m = c ? c->mon : wintomon(ev->window);
-	if(m != selmon) {
-		unfocus(selmon->sel, True);
-		selmon = m;
-	}
-	else if(!c || c == selmon->sel)
-		return;
-	focus(c);
-}
-
-void
 expose(XEvent *e) {
 	Monitor *m;
 	XExposeEvent *ev = &e->xexpose;
@@ -1019,18 +1002,16 @@ grabbuttons(Client *c, Bool focused) {
 		unsigned int i, j;
 		unsigned int modifiers[] = { 0, LockMask, numlockmask, numlockmask|LockMask };
 		XUngrabButton(dpy, AnyButton, AnyModifier, c->win);
-		if(focused) {
-			for(i = 0; i < LENGTH(buttons); i++)
-				if(buttons[i].click == ClkClientWin)
-					for(j = 0; j < LENGTH(modifiers); j++)
-						XGrabButton(dpy, buttons[i].button,
-						            buttons[i].mask | modifiers[j],
-						            c->win, False, BUTTONMASK,
-						            GrabModeAsync, GrabModeSync, None, None);
-		}
-		else
+		if(!focused)
 			XGrabButton(dpy, AnyButton, AnyModifier, c->win, False,
-			            BUTTONMASK, GrabModeAsync, GrabModeSync, None, None);
+			            BUTTONMASK, GrabModeSync, GrabModeSync, None, None);
+		for(i = 0; i < LENGTH(buttons); i++)
+			if(buttons[i].click == ClkClientWin)
+				for(j = 0; j < LENGTH(modifiers); j++)
+					XGrabButton(dpy, buttons[i].button,
+								buttons[i].mask | modifiers[j],
+								c->win, False, BUTTONMASK,
+								GrabModeAsync, GrabModeSync, None, None);
 	}
 }
 
