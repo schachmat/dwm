@@ -71,10 +71,11 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][Col
 															"-sf", colors[1][ColFG], NULL };
 
 static const char *termcmd[]  = { "urxvtc", NULL };
+static const char *quitcmd[]  = { "killall", "startdwm.sh", NULL };
 
-static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong"};
-static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause"};
-static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong"};
+static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong", NULL};
+static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause", NULL};
+static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,6 +115,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = quitcmd } },
 };
 
 /* button definitions */
