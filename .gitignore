@@ -2,3 +2,4 @@ dwm
 *.o
 *~
 *.swp
+.nfs*
