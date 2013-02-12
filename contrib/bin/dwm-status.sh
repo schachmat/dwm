@@ -8,7 +8,7 @@ print_mem_used() {
 }
 
 print_volume() {
-	local volume="$(amixer get PCM | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+	local volume="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
 	volume=$(printf "%3s" $volume)
 	if [[ $volume -le 0 ]]; then
 		echo -ne "ñ$volume"
