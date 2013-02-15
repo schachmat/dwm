@@ -74,6 +74,7 @@ static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *quitcmd[]  = { "killall", "startdwm.sh", NULL };
 
 static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong", NULL};
+static const char *musicstop[] = {"gmusicbrowser", "-cmd", "Stop", NULL};
 static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause", NULL};
 static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong", NULL};
 
@@ -102,7 +103,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_F6,     spawn,          {.v = musicprev } },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = musicprev } },
+	{ MODKEY,                       XK_F6,     spawn,          {.v = musicstop } },
 	{ MODKEY,                       XK_F7,     spawn,          {.v = musicplay } },
 	{ MODKEY,                       XK_F8,     spawn,          {.v = musicnext } },
 	TAGKEYS(                        XK_1,                      0)
