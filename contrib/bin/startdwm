@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# set statusbar text
+if [ -x $HOME/bin/dwm_status ]; then
+	$HOME/bin/dwm_status & statuspid=$!
+fi
+
+# set wallpaper
+if [ -x $HOME/bin/wallpapers_random ]; then
+	$HOME/bin/wallpapers_random &
+fi
+
+if [ -x $HOME/code/dwm/dwm ]; then
+	while true; do
+		ck-launch-session dbus-launch --sh-syntax --exit-with-session $HOME/code/dwm/dwm 2> $HOME/.dwmerr
+	done
+else
+	echo "$HOME/code/dwm/dwm executable not found" > $HOME/.dwmerr
+fi
+
+kill $statuspid
+killall wallpapers_random

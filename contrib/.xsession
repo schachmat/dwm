@@ -24,8 +24,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 urxvtd -q -f
 
 # run dwm
-if [ -x $HOME/bin/startdwm.sh ]; then
-	$HOME/bin/startdwm.sh & wmpid=$!
+if [ -x $HOME/bin/startdwm ]; then
+	$HOME/bin/startdwm & wmpid=$!
 fi
 
 wait $wmpid

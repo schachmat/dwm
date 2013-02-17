@@ -77,6 +77,7 @@ static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong", NULL};
 static const char *musicstop[] = {"gmusicbrowser", "-cmd", "Stop", NULL};
 static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause", NULL};
 static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong", NULL};
+static const char *wallpaper[] = {"wallpaper_next", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,6 +108,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F6,     spawn,          {.v = musicstop } },
 	{ MODKEY,                       XK_F7,     spawn,          {.v = musicplay } },
 	{ MODKEY,                       XK_F8,     spawn,          {.v = musicnext } },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = wallpaper } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
