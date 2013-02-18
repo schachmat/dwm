@@ -1361,7 +1361,12 @@ resizeclient(Client *c, int x, int y, int w, int h) {
 	c->oldy = c->y; c->y = wc.y = y;
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
-	wc.border_width = c->bw;
+	if(selmon->wx == c->x && selmon->wy == c->y && selmon->ww - 2*c->bw == c->w && selmon->wh - 2*c->bw == c->h && !c->isfloating && !c->isfullscreen) {
+		wc.border_width = 0;
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
+	} else
+		wc.border_width = c->bw;
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
