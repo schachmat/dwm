@@ -41,7 +41,6 @@ static const Rule rules[] = {
 	{ "Pidgin",        NULL,       NULL,       1 << 2,       False,       -1 },
 	{ "Thunderbird",   NULL,       NULL,       1 << 2,       False,       -1 },
 	{ "Gmusicbrowser", NULL,       NULL,       1 << 3,       False,       -1 },
-	{ "mplayer",       NULL,       NULL,       1 << 3,       False,       -1 },
 };
 
 /* layout(s) */
