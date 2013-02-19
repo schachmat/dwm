@@ -1,8 +1,0 @@
-#!/bin/sh
-
-killall wallpapers_random
-
-# set wallpaper
-if [ -x $HOME/bin/wallpapers_random ]; then
-	$HOME/bin/wallpapers_random
-fi
