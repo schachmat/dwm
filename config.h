@@ -70,7 +70,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][Col
 															"-sf", colors[1][ColFG], NULL };
 
 static const char *termcmd[]  = { "urxvtc", NULL };
-static const char *quitcmd[]  = { "killall", "startdwm", NULL };
+static const char *quitcmd[]  = { "killall", "dwm", NULL };
 
 static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong", NULL};
 static const char *musicstop[] = {"gmusicbrowser", "-cmd", "Stop", NULL};
