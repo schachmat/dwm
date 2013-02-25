@@ -76,7 +76,7 @@ static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong", NULL};
 static const char *musicstop[] = {"gmusicbrowser", "-cmd", "Stop", NULL};
 static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause", NULL};
 static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong", NULL};
-static const char *wallpaper[] = {"wallpaper_next", NULL};
+static const char *wallpaper[] = {"bin/wallpaper_next", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
