@@ -34,19 +34,19 @@ static const Bool topbar            = True;     /* False means bottom bar */
 static const char *tags[] = { "Æ", "À", "Á", "Å", "Â", "Ã", "7", "8", "9" };
 
 static const Rule rules[] = {
-	/* class           instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",          NULL,       NULL,       1 << 5,       True,        -1 },
-	{ "Firefox",       NULL,       NULL,       1 << 1,       False,       -1 },
-	{ "Iceweasel",     NULL,       NULL,       1 << 1,       False,       -1 },
-	{ "Pidgin",        NULL,       NULL,       1 << 2,       False,       -1 },
-	{ "Thunderbird",   NULL,       NULL,       1 << 2,       False,       -1 },
-	{ "Gmusicbrowser", NULL,       NULL,       1 << 3,       False,       -1 },
+	/* class           instance    title       tags mask     isfloating   resizehints   monitor */
+	{ "Gimp",          NULL,       NULL,       1 << 5,       True,        False,        -1 },
+	{ "Firefox",       NULL,       NULL,       1 << 1,       False,       False,        -1 },
+	{ "Iceweasel",     NULL,       NULL,       1 << 1,       False,       False,        -1 },
+	{ "Pidgin",        NULL,       NULL,       1 << 2,       False,       False,        -1 },
+	{ "Thunderbird",   NULL,       NULL,       1 << 2,       False,       False,        -1 },
+	{ "Gmusicbrowser", NULL,       NULL,       1 << 3,       False,       False,        -1 },
+	{ "MPlayer",       NULL,       NULL,       0,            False,       True,         -1 },
 };
 
 /* layout(s) */
 static const float mfact      = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
