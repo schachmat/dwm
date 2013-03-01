@@ -31,7 +31,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "Æ[c]", "À[s]", "Á[n]", "Å[m]", "Â[d]", "Ã[o]", "K", "H", "G" };
+static const char *tags[] = { "Æc", "Às", "Án", "Åm", "Âd", "Ão", "K", "H", "G" };
 
 static const Rule rules[] = {
 	/* class           inst  title  tags    floating  resize  monitor */
