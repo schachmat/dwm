@@ -737,7 +737,10 @@ drawbar(Monitor *m) {
 	dc.x = 0;
 	for(i = 0; i < LENGTH(tags); i++) {
 		dc.w = TEXTW(tags[i]);
-		col = dc.colors[ (m->tagset[m->seltags] & 1 << i) ? 1 : (urg & 1 << i ? 2:0) ];
+		col = dc.colors[(m->tagset[m->seltags] & 1 << i) ?    // selected => 3
+						3 : ((urg & 1 << i) ?                 // urgent   => 2
+							2 : ((occ & 1 << i) ?             // occupied => 1
+								1 : 4))];                     // else     => 4
 		drawtext(tags[i], col, True);
 		drawsquare(m == selmon && selmon->sel && selmon->sel->tags & 1 << i, occ & 1 << i, col);
 		dc.x += dc.w;

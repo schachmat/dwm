@@ -2,13 +2,14 @@
 
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
-#define NUMCOLORS         4
+#define NUMCOLORS         5
 static const char colors[NUMCOLORS][ColLast][8] = {
   // border   foreground background
   { "#000033", "#dddddd", "#000033" },  // normal
-  { "#000088", "#ffffff", "#000088" },  // selected
+  { "#000088", "#ffffff", "#000088" },  // occupied
   { "#ff0000", "#000000", "#ffff00" },  // urgent/warning  (black on yellow)
-  { "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
+  { "#ff0000", "#ffffff", "#ff0000" },  // selected
+  { "#ff0000", "#ffffff", "#ff0000" },  // empty tag
   // add more here
 };
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
