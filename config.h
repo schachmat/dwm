@@ -17,13 +17,15 @@ static const char font[]            = "-*-status-*-*-*-*-18-*-*-*-*-*-*-*";
 #define COL_BLUE	"#268bd2"
 #define COL_CYAN	"#2aa198"
 #define COL_GREEN	"#859900"
-//ÉÊËÀÁÏÐÑÒÓÚÛÜÝÞ
-#define NUMCOLORS         3
+
+#define NUMCOLORS	5
 static const char colors[NUMCOLORS][ColLast][8] = {
-  // border			foreground	background
-  { COL_FG_D,		COL_FG,		COL_BG },		// normal
-  { COL_MAGENTA,	COL_BLUE,	COL_BG },		// selected
-  { COL_RED,		COL_YELLOW,	COL_BG },		// urgent/warning
+	// border         foreground  background
+	{ COL_FG_D,       COL_FG,     COL_BG },    // normal
+	{ COL_MAGENTA,    COL_BLUE,   COL_BG },    // occupied
+	{ COL_RED,        COL_YELLOW, COL_BG },    // urgent/warning
+	{ COL_RED,        COL_GREEN,  COL_BG },    // selected
+	{ COL_FG_D,       COL_FG_D,   COL_BG },    // empty tag
 };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -34,14 +36,15 @@ static const Bool topbar            = True;     /* False means bottom bar */
 static const char *tags[] = { "Æc", "Às", "Án", "Åm", "Âd", "Ão", "K", "H", "G" };
 
 static const Rule rules[] = {
-	/* class           inst  title  tags    floating  resize  monitor */
-	{ "Gimp",          NULL, NULL,  1 << 5, True,     False,  -1 },
-	{ "Firefox",       NULL, NULL,  1 << 1, False,    False,  -1 },
-	{ "Iceweasel",     NULL, NULL,  1 << 1, False,    False,  -1 },
-	{ "Pidgin",        NULL, NULL,  1 << 2, False,    False,  -1 },
-	{ "Thunderbird",   NULL, NULL,  1 << 2, False,    False,  -1 },
-	{ "Gmusicbrowser", NULL, NULL,  1 << 3, False,    False,  -1 },
-	{ "MPlayer",       NULL, NULL,  0,      False,    True,   -1 },
+	/* class                 inst  title  tags    floating  resize  monitor */
+	{ "Gimp",                NULL, NULL,  1 << 5, True,     False,  -1 },
+	{ "libreoffice-writer",  NULL, NULL,  1 << 5, False,    False,  -1 },
+	{ "Firefox",             NULL, NULL,  1 << 1, False,    False,  -1 },
+	{ "Iceweasel",           NULL, NULL,  1 << 1, False,    False,  -1 },
+	{ "Pidgin",              NULL, NULL,  1 << 2, False,    False,  -1 },
+	{ "Thunderbird",         NULL, NULL,  1 << 2, False,    False,  -1 },
+	{ "Gmusicbrowser",       NULL, NULL,  1 << 3, False,    False,  -1 },
+	{ "MPlayer",             NULL, NULL,  0,      False,    True,   -1 },
 };
 
 /* layout(s) */
