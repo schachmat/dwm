@@ -33,7 +33,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = False;    /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "Æc", "Às", "Án", "Åm", "Âd", "Ão", "K", "H", "G" };
+static const char *tags[] = { "Æ", "À", "Á", "Å", "Â", "Ã", "K", "H", "G" };
 
 static const Rule rules[] = {
 	/* class                 inst  title  tags    floating  resize  monitor */
@@ -101,7 +101,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask, XK_y,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask, XK_f,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY,           XK_bla,    setlayout,      {0} },
 	{ MODKEY|ShiftMask, XK_space,  togglefloating, {0} },
 	{ MODKEY,           XK_u,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask, XK_u,      tag,            {.ui = ~0 } },
