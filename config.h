@@ -72,7 +72,7 @@ static const char *dmenucmd[]  = {"dmenu_run", "-fn", font,
                                   "-nf", colors[0][ColFG],
                                   "-sb", colors[1][ColBG],
                                   "-sf", colors[1][ColFG],                 NULL};
-static const char *termcmd[]   = {"urxvtc",                                NULL};
+static const char *termcmd[]   = {"st",                                    NULL};
 static const char *quitcmd[]   = {"killall", "dwm",                        NULL};
 static const char *lockcmd[]   = {"i3lock", "-i", "bilder/wallpaper/lock", NULL};
 static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong",     NULL};
