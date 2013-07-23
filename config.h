@@ -75,10 +75,10 @@ static const char *dmenucmd[]  = {"dmenu_run", "-fn", font,
 static const char *termcmd[]   = {"st",                                    NULL};
 static const char *quitcmd[]   = {"killall", "dwm",                        NULL};
 static const char *lockcmd[]   = {"i3lock", "-i", "bilder/wallpaper/lock", NULL};
-static const char *musicprev[] = {"gmusicbrowser", "-cmd", "PrevSong",     NULL};
-static const char *musicstop[] = {"gmusicbrowser", "-cmd", "Stop",         NULL};
-static const char *musicplay[] = {"gmusicbrowser", "-cmd", "PlayPause",    NULL};
-static const char *musicnext[] = {"gmusicbrowser", "-cmd", "NextSong",     NULL};
+static const char *musicprev[] = {"cmus-remote", "-r",                     NULL};
+static const char *musicstop[] = {"cmus-remote", "-s",                     NULL};
+static const char *musicplay[] = {"cmus-remote", "-u",                     NULL};
+static const char *musicnext[] = {"cmus-remote", "-n",                     NULL};
 static const char *wallpaper[] = {"bin/wallpaper_next",                    NULL};
 static const char *keylayout[] = {"bin/toggle_keyboard_layout",            NULL};
 
