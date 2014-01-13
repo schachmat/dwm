@@ -20,12 +20,12 @@ static const char font[]            = "-*-status-*-*-*-*-18-*-*-*-*-*-*-*";
 
 #define NUMCOLORS	5
 static const char colors[NUMCOLORS][ColLast][8] = {
-	// border         foreground  background
-	{ COL_FG_D,       COL_FG,     COL_BG },    // normal
-	{ COL_MAGENTA,    COL_BLUE,   COL_BG },    // occupied
-	{ COL_RED,        COL_YELLOW, COL_BG },    // urgent/warning
-	{ COL_RED,        COL_GREEN,  COL_BG },    // selected
-	{ COL_FG_D,       COL_FG_D,   COL_BG },    // empty tag
+	// border   foreground  background
+	{ COL_BG_L, COL_FG,     COL_BG },    // normal
+	{ COL_FG_L, COL_BLUE,   COL_BG },    // occupied
+	{ COL_RED,  COL_YELLOW, COL_BG },    // urgent/warning
+	{ COL_RED,  COL_GREEN,  COL_BG },    // selected
+	{ COL_FG_D, COL_FG_D,   COL_BG },    // empty tag
 };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
