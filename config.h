@@ -26,6 +26,7 @@ static const char colors[NUMCOLORS][ColLast][8] = {
 	{ COL_RED,  COL_YELLOW, COL_BG },    // urgent/warning
 	{ COL_RED,  COL_GREEN,  COL_BG },    // selected
 	{ COL_FG_D, COL_FG_D,   COL_BG },    // empty tag
+	{ COL_RED,  COL_RED,    COL_BG },    // urgent/warning text for statusbar
 };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
