@@ -18,7 +18,7 @@ static const char font[]            = "-*-status-*-*-*-*-18-*-*-*-*-*-*-*";
 #define COL_CYAN	"#2aa198"
 #define COL_GREEN	"#859900"
 
-#define NUMCOLORS	5
+#define NUMCOLORS	6
 static const char colors[NUMCOLORS][ColLast][8] = {
 	// border   foreground  background
 	{ COL_BG_L, COL_FG,     COL_BG },    // normal
