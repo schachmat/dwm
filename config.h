@@ -73,7 +73,8 @@ static const char *dmenucmd[]  = {"dmenu_run", "-fn", font,
                                   "-nf", colors[0][ColFG],
                                   "-sb", colors[1][ColBG],
                                   "-sf", colors[1][ColFG],                 NULL};
-static const char *termcmd[]   = {"st",                                    NULL};
+static const char *termcmd[]   = {"tabbed -r 2 st -w ''",                  NULL};
+static const char *webcmd[]    = {"tabbed -r 2 surf -e ''",                NULL};
 static const char *quitcmd[]   = {"killall", "dwm",                        NULL};
 static const char *lockcmd[]   = {"i3lock", "-i", "bilder/wallpaper/lock", NULL};
 static const char *musicprev[] = {"cmus-remote", "-r",                     NULL};
@@ -110,6 +111,7 @@ static Key keys[] = {
 	{ MODKEY,           XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask, XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,           XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,           XK_F5,     spawn,          {.v = musicprev } },
 	{ MODKEY,           XK_F6,     spawn,          {.v = musicstop } },
 	{ MODKEY,           XK_F7,     spawn,          {.v = musicplay } },
