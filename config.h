@@ -73,8 +73,8 @@ static const char *dmenucmd[]  = {"dmenu_run", "-fn", font,
                                   "-nf", colors[0][ColFG],
                                   "-sb", colors[1][ColBG],
                                   "-sf", colors[1][ColFG],                 NULL};
-static const char *termcmd[]   = {"tabbed -r 2 st -w ''",                  NULL};
-static const char *webcmd[]    = {"tabbed -r 2 surf -e ''",                NULL};
+static const char *termcmd[]   = {"tabbed", "-c", "-r", "2", "st", "-w", "''", NULL};
+static const char *webcmd[]    = {"tabbed", "-c", "-r", "2", "surf", "-e", "''", NULL};
 static const char *quitcmd[]   = {"killall", "dwm",                        NULL};
 static const char *lockcmd[]   = {"i3lock", "-i", "bilder/wallpaper/lock", NULL};
 static const char *musicprev[] = {"cmus-remote", "-r",                     NULL};
