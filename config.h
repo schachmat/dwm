@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      view,           {.ui = 1 << TAG} }, \
@@ -72,25 +72,25 @@ static const char *dmenucmd[]  = {"dmenu_run", "-fn", font,
                                   "-nb", colors[0][ColBG],
                                   "-nf", colors[0][ColFG],
                                   "-sb", colors[1][ColBG],
-                                  "-sf", colors[1][ColFG],                 NULL};
-static const char *termcmd[]   = {"tabbed", "-c", "-r", "2", "st", "-w", "''", NULL};
+                                  "-sf", colors[1][ColFG],                       NULL};
+static const char *termcmd[]   = {"tabbed", "-c", "-r", "2", "st", "-w", "''",   NULL};
 static const char *webcmd[]    = {"tabbed", "-c", "-r", "2", "surf", "-e", "''", NULL};
-static const char *quitcmd[]   = {"killall", "dwm",                        NULL};
-static const char *lockcmd[]   = {"i3lock", "-i", "bilder/wallpaper/lock", NULL};
-static const char *musicprev[] = {"cmus-remote", "-r",                     NULL};
-static const char *musicstop[] = {"cmus-remote", "-s",                     NULL};
-static const char *musicplay[] = {"cmus-remote", "-u",                     NULL};
-static const char *musicnext[] = {"cmus-remote", "-n",                     NULL};
+static const char *quitcmd[]   = {"killall", "dwm",                              NULL};
+static const char *lockcmd[]   = {"slock",                                       NULL};
+static const char *darkcmd[]   = {"xbacklight", "-dec", "10",                    NULL};
+static const char *brightcmd[] = {"xbacklight", "-inc", "10",                    NULL};
 static const char *wallpaper[] = {"bin/wallpaper_next",                    NULL};
 static const char *keylayout[] = {"bin/toggle_keyboard_layout",            NULL};
+static const char *bagger[]    = {"bin/bagger",                            NULL};
 
 static Key keys[] = {
 	/* modifier         key        function        argument */
 	{ MODKEY|ShiftMask, XK_r,      quit,           {0} },
-	{ MODKEY|ShiftMask, XK_q,      spawn,          {.v = quitcmd } },
+//	{ MODKEY|ShiftMask, XK_q,      spawn,          {.v = quitcmd } },
 	{ MODKEY,           XK_q,      spawn,          {.v = lockcmd } },
 	{ MODKEY,           XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,           XK_t,      spawn,          {.v = termcmd } },
+	{ MODKEY,           XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,           XK_b,      togglebar,      {0} },
 	{ MODKEY,           XK_a,      focusstack,     {.i = +1 } },
 	{ MODKEY,           XK_l,      focusstack,     {.i = -1 } },
@@ -111,11 +111,9 @@ static Key keys[] = {
 	{ MODKEY,           XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask, XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,           XK_w,      spawn,          {.v = webcmd } },
-	{ MODKEY,           XK_F5,     spawn,          {.v = musicprev } },
-	{ MODKEY,           XK_F6,     spawn,          {.v = musicstop } },
-	{ MODKEY,           XK_F7,     spawn,          {.v = musicplay } },
-	{ MODKEY,           XK_F8,     spawn,          {.v = musicnext } },
+	{ MODKEY,           XK_F4,     spawn,          {.v = bagger } },
+	{ MODKEY,           XK_F5,     spawn,          {.v = darkcmd } },
+	{ MODKEY,           XK_F6,     spawn,          {.v = brightcmd } },
 	{ MODKEY,           XK_F9,     spawn,          {.v = wallpaper } },
 	{ MODKEY,           XK_F10,    spawn,          {.v = keylayout } },
 	TAGKEYS(            XK_c,                      0)
