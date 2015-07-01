@@ -82,8 +82,8 @@ static const char *brightcmd[] = {"xbacklight", "-inc", "10",                   
 static const char *wallpaper[] = {"bin/wallpaper_next",                          NULL};
 static const char *keylayout[] = {"bin/toggle_keyboard_layout",                  NULL};
 static const char *bagger[]    = {"bin/bagger",                                  NULL};
-static const char *volup[]     = {"amixer", "-c1", "sset", "Master", "5+%",      NULL};
-static const char *voldown[]   = {"amixer", "-c1", "sset", "Master", "5-%",      NULL};
+static const char *volup[]     = {"amixer", "-c1", "sset", "Master", "5%+",      NULL};
+static const char *voldown[]   = {"amixer", "-c1", "sset", "Master", "5%-",      NULL};
 static const char *volmute[]   = {"amixer", "-c1", "sset", "Master", "toggle",   NULL};
 
 static Key keys[] = {
