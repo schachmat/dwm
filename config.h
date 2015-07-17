@@ -38,7 +38,7 @@ static const char *tags[] = { "Æ", "À", "Á", "Å", "Â", "Ã", "K", "H", "G" 
 
 static const Rule rules[] = {
 	/* class                 inst  title  tags    floating  resize  monitor */
-	{ "Gimp",                NULL, NULL,  1 << 5, True,     False,  -1 },
+	{ "Gimp",                NULL, NULL,  1 << 5, False,    False,  -1 },
 	{ "libreoffice-writer",  NULL, NULL,  1 << 5, False,    False,  -1 },
 	{ "Firefox",             NULL, NULL,  1 << 1, False,    False,  -1 },
 	{ "Iceweasel",           NULL, NULL,  1 << 1, False,    False,  -1 },
