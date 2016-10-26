@@ -209,6 +209,8 @@ static void sigchld(int unused);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
+static void textbar(int x, const char *text, unsigned int len);
+static int textnw(const char *text, unsigned int len);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -440,7 +442,7 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - TEXTW(stext))
+		else if (ev->x > selmon->ww - textnw(stext, strlen(stext)))
 			click = ClkStatusText;
 		else
 			click = ClkWinTitle;
@@ -705,8 +707,8 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+		sw = textnw(stext, strlen(stext)) - lrpad + 2; /* 2px right padding */
+		textbar(m->ww - sw, stext, strlen(stext));
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -1673,6 +1675,49 @@ tagmon(const Arg *arg)
 	if (!selmon->sel || !mons->next)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
+}
+
+void
+textbar(int x, const char *text, unsigned int len)
+{
+	int i, j, nx;
+	char buf[len + 1];
+
+	if (len <= 0 || text[0] == '\0')
+		return;
+
+	for (j = 0; len > j && text[j] > '\0' && text[j] <= LENGTH(colors); j++)
+		drw_setscheme(drw, scheme[(unsigned int)(text[j]-1)]);
+
+	for (i = j; len > i && (text[i] < '\0' || text[i] > LENGTH(colors)); i++)
+		buf[i] = text[i];
+	buf[i] = '\0';
+
+	nx = drw_text(drw, x, 0, TEXTW(&buf[j]), bh, 0, &buf[j], 0) - lrpad;
+	textbar(nx, &text[i], len - i);
+}
+
+int
+textnw(const char *text, unsigned int len)
+{
+	int i, ret;
+	char buf[len + 1];
+
+	if (len <= 0 || text[0] == '\0')
+		return lrpad;
+
+	/* don't need to decode UTF-8 codepoints since we are only checking for
+	 * ASCII characters and UTF-8 has clear distinction between multi-byte and
+	 * single-byte characters. */
+	for (i = 0; len > i && (text[i] < '\0' || text[i] > LENGTH(colors)); i++)
+		buf[i] = text[i];
+	buf[i] = '\0';
+
+	ret = TEXTW(buf) - lrpad;
+	while (len > i && text[i] > '\0' && text[i] <= LENGTH(colors))
+		i++;
+
+	return ret + textnw(&text[i], len - i);
 }
 
 void
