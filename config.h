@@ -93,9 +93,9 @@ static const char *brightcmd[] = {"brightnessctl", "set", "5%+", NULL};
 //static const char *wallpaper[] = {"bin/wallpaper_next",                          NULL};
 //static const char *keylayout[] = {"bin/toggle_keyboard_layout",                  NULL};
 //static const char *bagger[]   = {"bin/bagger", NULL};
-//static const char *volup[]    = {"amixer", "-c1", "sset", "Master", "5%+", NULL};
-//static const char *voldown[]  = {"amixer", "-c1", "sset", "Master", "5%-", NULL};
-//static const char *volmute[]  = {"amixer", "-c1", "sset", "Master", "toggle", NULL};
+static const char *volup[]    = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL};
+static const char *voldown[]  = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
+static const char *volmute[]  = {"pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL};
 
 static Key keys[] = {
 	/* modifier         key        function        argument */
@@ -125,9 +125,9 @@ static Key keys[] = {
 	{ MODKEY,           XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask, XK_period, tagmon,         {.i = +1 } },
-//	{ MODKEY,           XK_F1,     spawn,          {.v = volmute } },
-//	{ MODKEY,           XK_F2,     spawn,          {.v = voldown } },
-//	{ MODKEY,           XK_F3,     spawn,          {.v = volup } },
+	{ MODKEY,           XK_F1,     spawn,          {.v = volmute } },
+	{ MODKEY,           XK_F2,     spawn,          {.v = voldown } },
+	{ MODKEY,           XK_F3,     spawn,          {.v = volup } },
 //	{ MODKEY,           XK_F4,     spawn,          {.v = bagger } },
 	{ MODKEY,           XK_F5,     spawn,          {.v = darkcmd } },
 	{ MODKEY,           XK_F6,     spawn,          {.v = brightcmd } },
